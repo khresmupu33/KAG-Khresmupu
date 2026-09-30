@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+    <title>Sulit — Lord Vindex | 0–25</title>
+    <link rel="stylesheet" href="sulit.css">
+</head>
+
+<body class="game-page" data-level="hard">
+    <div id="mobileLandscapeOverlay" aria-hidden="false">
+        <div class="ml-box">
+            <div class="ml-icon">📱↻</div>
+            <h2>Putar HP ke Landscape</h2>
+            <p>Game akan dimainkan dalam posisi <b>landscape</b>. Tekan layar bila browser meminta izin layar penuh.</p>
+        </div>
+    </div>
+    <div id="gameWrapper">
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+        <div id="gameScreen" class="screen">
+            <div id="hud">
+                <div id="scoreText">Poin : <span id="scoreNumber">0</span></div>
+                <div id="powerStatus" class="powerStatus hidden"><span class="powerIcon">⚡</span><span
+                        id="powerText">KILL</span></div>
+                <div id="lives">
+                    <div class="life"></div>
+                    <div class="life"></div>
+                    <div class="life"></div>
+                </div>
+            </div>
+            <div id="pauseText">⏸ PAUSED<br><small>Tekan P atau PAUSE untuk lanjut</small></div>
+            <button id="pauseButton" class="darkButton" onclick="togglePause()">⏸ PAUSE</button>
+            <div id="readyOverlay">BERSIAPLAH<br><br>Tekan tombol apapun</div>
+            <div id="spawnWarning">
+                <div class="spawnTitle">⚠ KILLER TERDETEKSI ⚠</div>
+                <div class="spawnSub">SESUTU SEDANG MUNCUL...</div>
+            </div>
+            <div id="mobileControls" aria-label="Kontrol mobile">
+                <div class="controlGroup leftControls"><button class="controlButton"
+                        data-key="ArrowLeft">◀</button><button class="controlButton" data-key="ArrowRight">▶</button>
+                </div>
+                <div class="controlGroup rightControls"><button class="controlButton"
+                        data-key="ArrowUp">▲</button><button class="controlButton" data-key="ArrowDown">▼</button></div>
+            </div>
+        </div>
+        <div id="endScreen" class="screen hidden">
+            <div class="endTitle">GAME OVER</div>
+            <div class="endScore" id="finalScore">Poin : 0</div>
+            <div id="hardDeathMessage"></div>
+            <div class="endButtons"><button onclick="restartGame()">ULANG</button><button class="darkButton"
+                    onclick="showMenu()">KEMBALI KE MENU</button></div>
+        </div>
+        <div id="trueEndingScreen" class="screen hidden">
+            <div class="trueCongrats">🎉 SELAMAT 🎉</div>
+            <div class="trueText">KAMU MENAKLUKKAN<br>KILLER &amp; GADFLY</div>
+            <div class="trueEnding">TRUE ENDING</div><button onclick="showMenu()">KEMBALI KE MENU</button>
+        </div>
+    </div>
+    <script>(function () { const overlay = document.getElementById('mobileLandscapeOverlay'); const mobile = window.matchMedia('(max-width:900px)'); function isM() { return mobile.matches && ('ontouchstart' in window || navigator.maxTouchPoints > 0) } function update() { const portrait = isM() && innerHeight >= innerWidth; overlay.style.display = portrait ? 'flex' : 'none'; overlay.setAttribute('aria-hidden', portrait ? 'false' : 'true'); } async function lock() { try { if (document.documentElement.requestFullscreen && !document.fullscreenElement) await document.documentElement.requestFullscreen(); if (screen.orientation && screen.orientation.lock) await screen.orientation.lock('landscape'); } catch (e) { } update() } overlay.addEventListener('click', lock); overlay.addEventListener('touchend', lock, { passive: true }); addEventListener('resize', update); addEventListener('orientationchange', () => setTimeout(update, 100)); addEventListener('fullscreenchange', update); update(); })();</script>
+    <script src="sulit.js"></script>
+</body>
+
+</html>

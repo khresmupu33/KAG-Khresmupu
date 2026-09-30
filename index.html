@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Khresmupu — Killer & Gadfly</title>
+<meta name="description" content="Khresmupu presents Killer & Gadfly — Ultimate Horror Mode.">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Arial,Helvetica,sans-serif;background:#020305;color:#fff}
+body{overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+.page{min-height:100vh;position:relative;overflow:hidden;background:
+radial-gradient(circle at 50% 35%,rgba(150,0,0,.20),transparent 25%),
+radial-gradient(circle at 15% 85%,rgba(120,0,0,.12),transparent 25%),
+linear-gradient(145deg,#020305 0%,#090b10 45%,#160507 72%,#020305 100%)}
+.noise{position:absolute;inset:0;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E")}
+header{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 6%;position:relative;z-index:3;border-bottom:1px solid rgba(255,255,255,.06);background:rgba(2,3,5,.58);backdrop-filter:blur(10px)}
+.brand{font-size:22px;font-weight:900;letter-spacing:4px;color:#f3f4f6}
+.brand span{color:#ef2222;text-shadow:0 0 15px rgba(255,0,0,.65)}
+.nav{display:flex;gap:26px;color:#94a3b8;font-size:13px;font-weight:700;letter-spacing:2px}
+.nav a:hover{color:#fff}
+.hero{min-height:calc(100vh - 76px);display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:30px;padding:70px 8%;position:relative;z-index:2}
+.kicker{color:#ef4444;font-size:12px;font-weight:900;letter-spacing:5px;margin-bottom:18px}
+h1{font-size:clamp(50px,7vw,96px);line-height:.9;margin:0;color:#ef2222;font-weight:1000;letter-spacing:5px;text-shadow:0 0 6px #000,0 0 18px #f00,0 0 45px rgba(255,0,0,.38)}
+h1 small{display:block;color:#e5e7eb;font-size:.28em;letter-spacing:8px;margin-top:22px;text-shadow:none}
+.desc{max-width:620px;color:#aeb7c5;font-size:17px;line-height:1.75;margin:28px 0}
+.actions{display:flex;flex-wrap:wrap;gap:13px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-width:190px;padding:15px 23px;border-radius:8px;border:1px solid #64748b;background:linear-gradient(180deg,#f8fafc,#cbd5e1);color:#111827;font-weight:900;letter-spacing:1px;box-shadow:0 5px 0 #475569;transition:.15s}
+.btn:hover{transform:translateY(-3px);filter:brightness(1.08)}
+.btn:active{transform:translateY(2px);box-shadow:0 2px 0 #475569}
+.btn.red{color:#fff;background:linear-gradient(180deg,#991b1b,#450a0a);border-color:#ef4444;box-shadow:0 5px 0 #280303}
+.btn.dark{color:#fff;background:linear-gradient(180deg,#334155,#111827)}
+.stats{display:flex;gap:28px;margin-top:38px}
+.stat strong{display:block;color:#fff;font-size:25px}
+.stat span{color:#64748b;font-size:11px;letter-spacing:2px}
+.visual{position:relative;min-height:470px;display:flex;align-items:center;justify-content:center}
+.arena{width:min(430px,90vw);aspect-ratio:4/3;position:relative;border:1px solid #343b46;border-radius:12px;background:
+radial-gradient(circle at 50% 50%,rgba(120,0,0,.18),transparent 38%),
+linear-gradient(145deg,#050608,#0b0d12);box-shadow:0 0 30px rgba(0,0,0,.9),0 0 70px rgba(255,0,0,.12),inset 0 0 60px rgba(0,0,0,.8);overflow:hidden}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:32px 32px;transform:perspective(500px) rotateX(58deg) scale(1.5);transform-origin:center bottom;opacity:.55}
+.corner{position:absolute;width:45px;height:45px;border-color:#ef2222;filter:drop-shadow(0 0 8px red)}
+.c1{left:18px;top:18px;border-left:2px solid;border-top:2px solid}.c2{right:18px;top:18px;border-right:2px solid;border-top:2px solid}.c3{left:18px;bottom:18px;border-left:2px solid;border-bottom:2px solid}.c4{right:18px;bottom:18px;border-right:2px solid;border-bottom:2px solid}
+.entity{position:absolute;display:flex;align-items:center;justify-content:center}
+.player{width:25px;height:25px;background:#22c55e;box-shadow:0 0 18px rgba(34,197,94,.8);left:47%;top:48%;animation:player 2.2s ease-in-out infinite}
+.target{width:22px;height:22px;background:#f8fafc;box-shadow:0 0 18px #fff;left:72%;top:25%;animation:target 2s ease-in-out infinite}
+.killer{width:28px;height:28px;background:#7f1d1d;border:3px solid #ef4444;box-shadow:0 0 18px rgba(239,68,68,.8);animation:kill 2.7s ease-in-out infinite}
+.k1{left:15%;top:25%}.k2{right:13%;bottom:23%;animation-delay:.7s}.k3{left:23%;bottom:14%;animation-delay:1.3s}
+.gadfly{width:20px;height:20px;background:#111827;border:2px solid #ef4444;box-shadow:0 0 12px rgba(239,68,68,.7)}
+.gtop{top:8px;left:49%;}.gbottom{bottom:8px;left:28%}.gleft{left:8px;top:57%}.gright{right:8px;top:28%}
+.meteor{position:absolute;width:9px;height:25px;background:linear-gradient(#fef08a,#ef4444,transparent);filter:drop-shadow(0 0 8px #f00);transform:rotate(35deg);animation:meteor 2.1s linear infinite}
+.m1{left:32%;top:-35px}.m2{left:66%;top:-45px;animation-delay:.8s}.m3{left:83%;top:-55px;animation-delay:1.5s}
+.arenaLabel{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);font-size:10px;letter-spacing:4px;color:#64748b;white-space:nowrap}
+.line{width:100%;height:2px;margin:0 auto 20px;background:linear-gradient(90deg,transparent,#ef4444,transparent);box-shadow:0 0 15px rgba(255,0,0,.7)}
+.section{position:relative;z-index:2;padding:90px 8%;border-top:1px solid rgba(255,255,255,.05);background:rgba(0,0,0,.18)}
+.section h2{text-align:center;color:#ff3333;font-size:38px;letter-spacing:4px;margin:0 0 15px;text-shadow:0 0 15px rgba(255,0,0,.5)}
+.sectionLead{text-align:center;color:#7f8b9b;max-width:650px;margin:0 auto 45px;line-height:1.7}
+.cards{max-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.card{padding:24px 20px;border:1px solid #252b34;border-radius:10px;background:linear-gradient(145deg,rgba(15,17,22,.96),rgba(4,5,7,.96));box-shadow:0 12px 35px rgba(0,0,0,.28)}
+.card .icon{font-size:28px}.card h3{font-size:16px;letter-spacing:1px;margin:14px 0 8px}.card p{font-size:13px;color:#7f8b9b;line-height:1.6;margin:0}
+.cta{padding:90px 20px;text-align:center;position:relative;z-index:2}.cta h2{font-size:40px;margin:0 0 12px}.cta p{color:#8490a0;margin-bottom:28px}
+footer{position:relative;z-index:2;padding:24px 8%;border-top:1px solid rgba(255,255,255,.06);color:#475569;text-align:center;font-size:11px;letter-spacing:2px}
+@keyframes player{0%,100%{transform:translate(0,0)}50%{transform:translate(35px,-18px)}}
+@keyframes target{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+@keyframes kill{0%,100%{transform:translate(0,0) rotate(0)}50%{transform:translate(45px,40px) rotate(180deg)}}
+@keyframes meteor{0%{transform:translateY(0) rotate(35deg);opacity:0}12%{opacity:1}100%{transform:translateY(560px) rotate(35deg);opacity:0}}
+@media(max-width:850px){
+header{padding:0 5%}.nav{display:none}.hero{grid-template-columns:1fr;padding:55px 6% 70px;text-align:center}.desc{margin-left:auto;margin-right:auto}.actions{justify-content:center}.stats{justify-content:center}.visual{min-height:390px}.cards{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:520px){
+h1{font-size:48px}.desc{font-size:15px}.btn{width:100%}.stats{gap:18px}.visual{min-height:310px}.cards{grid-template-columns:1fr}.section{padding:70px 6%}
+}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="noise"></div>
+<header>
+  <div class="brand"><span>KHRES</span>MUPU</div>
+  <nav class="nav">
+    <a href="#about">TENTANG</a>
+    <a href="#features">FITUR</a>
+    <a href="#play">MAIN</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="about">
+  <div>
+    <div class="kicker">KHRESMUPU PRESENTS</div>
+    <div class="line"></div>
+    <h1>KILLER &amp;<br>GADFLY<small>ULTIMATE HORROR MODE</small></h1>
+    <p class="desc">Bertahan hidup, kumpulkan poin, hindari Gadfly, dan jangan biarkan para Killer menangkapmu. Semakin tinggi skor, semakin kacau arena.</p>
+    <div class="actions" id="play">
+      <a class="btn red" href="menu.html">▶ MULAI BERMAIN</a>
+      <a class="btn dark" href="#features">LIHAT FITUR</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><strong>100</strong><span>POIN UNTUK TRUE ENDING</span></div>
+      <div class="stat"><strong>3</strong><span>NYAWA AWAL</span></div>
+      <div class="stat"><strong>12</strong><span>MAX KILLER</span></div>
+    </div>
+  </div>
+
+  <div class="visual" aria-label="Preview arena Killer & Gadfly">
+    <div class="arena">
+      <div class="grid"></div>
+      <div class="corner c1"></div><div class="corner c2"></div><div class="corner c3"></div><div class="corner c4"></div>
+      <div class="entity player"></div>
+      <div class="entity target"></div>
+      <div class="entity killer k1"></div><div class="entity killer k2"></div><div class="entity killer k3"></div>
+      <div class="entity gadfly gtop"></div><div class="entity gadfly gbottom"></div><div class="entity gadfly gleft"></div><div class="entity gadfly gright"></div>
+      <div class="meteor m1"></div><div class="meteor m2"></div><div class="meteor m3"></div>
+      <div class="arenaLabel">DANGER IS EVERYWHERE</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="features">
+  <h2>ARENA OF FEAR</h2>
+  <p class="sectionLead">Game ini mempertahankan elemen dari versi game yang kamu kirim: player hijau, target putih, Gadfly di empat sisi, Killer yang mengejar, Power Kill, dan True Ending di 100 poin.</p>
+  <div class="cards">
+    <div class="card"><div class="icon">🎯</div><h3>KEJAR TARGET</h3><p>Setiap kotak putih yang berhasil diambil menambah 1 poin.</p></div>
+    <div class="card"><div class="icon">🪰</div><h3>GADFLY</h3><p>Musuh dari empat sisi membaca posisi player dan terus mengganggu pergerakan.</p></div>
+    <div class="card"><div class="icon">🔥</div><h3>KILLER</h3><p>Killer melakukan loading lalu mulai mengejar. Jumlahnya dapat bertambah hingga 12.</p></div>
+    <div class="card"><div class="icon">⚡</div><h3>POWER KILL</h3><p>Ambil Power Kill untuk membuat Killer yang menyentuh player hancur menjadi partikel.</p></div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>BERANI MASUK?</h2>
+  <p>Jangan berhenti di 10 poin. Kejar 100 poin dan lihat True Ending.</p>
+  <a class="btn red" href="menu.html">▶ MASUK KE ARENA</a>
+</section>
+</main>
+
+<footer>© 2026 KHRESMUPU · KILLER &amp; GADFLY</footer>
+</div>
+</body>
+</html>
