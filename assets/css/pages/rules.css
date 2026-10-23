@@ -1,0 +1,22 @@
+/* Halaman cara main (dipasang setelah menu.css) */
+.rules { width: min(900px, 94vw); padding: 28px; }
+.panel {
+    max-height: 86vh; overflow: auto; padding: 30px;
+    border: 1px solid #334155; border-radius: 22px;
+    background: rgba(5, 5, 5, .88); box-shadow: 0 20px 60px rgba(0, 0, 0, .45);
+}
+.panel h1 { color: #ff3333; text-align: center; margin: 0 0 24px; font-size: clamp(30px, 5vw, 48px); }
+.item {
+    display: grid; grid-template-columns: 84px 1fr; align-items: center; gap: 14px;
+    padding: 15px 0; border-bottom: 1px solid rgba(148, 163, 184, .14);
+    line-height: 1.65; color: #e5e7eb;
+}
+.item:last-of-type { border-bottom: 0; }
+.item b { color: #fca5a5; }
+.item .kg-preview { --box: 84; --kg-s: .5; }
+.item .emoji { font-size: 38px; text-align: center; }
+.item.is-hard b { color: #d8b4fe; }
+.panel > a.btn { margin-top: 18px; }
+.panel::-webkit-scrollbar { width: 8px; }
+.panel::-webkit-scrollbar-thumb { background: #7f1d1d; border-radius: 20px; }
+@media (max-width: 520px) { .item { grid-template-columns: 64px 1fr; } .item .kg-preview { --box: 64; --kg-s: .32; } }

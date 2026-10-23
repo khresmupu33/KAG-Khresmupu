@@ -1,0 +1,77 @@
+/* ==========================================================================
+   ITEM — Nyawa (hijau), Power Kill (emas), Time Stop (biru)
+   ========================================================================== */
+
+/* ── Nyawa ─────────────────────────────────────────────────────────────── */
+.kg-health .kg-art { --w: 100px; --h: 100px; }
+.kg-health__orb {
+    inset: 0;
+    border-radius: 50%;
+    border: 7px solid #bbf7d0;
+    background: radial-gradient(circle at 34% 28%, #86efac 0, #22c55e 52%, #15803d 100%);
+    box-shadow: 0 0 40px rgba(34, 197, 94, .75), inset -8px -10px 0 rgba(0, 0, 0, .15);
+    --dur: 1.3s;
+    animation-name: kg-item-pulse;
+}
+.kg-health__bar { background: #fff; border-radius: 4px; box-shadow: 0 0 8px rgba(255, 255, 255, .7); }
+.kg-health__bar--v { left: 42px; top: 18px; width: 16px; height: 64px; }
+.kg-health__bar--h { left: 18px; top: 42px; width: 64px; height: 16px; }
+
+@keyframes kg-item-pulse {
+    50% { transform: scale(1.1); }
+}
+
+/* ── Power Kill ────────────────────────────────────────────────────────── */
+.kg-power .kg-art { --w: 104px; --h: 104px; }
+.kg-power__orb {
+    inset: 0;
+    border-radius: 50%;
+    border: 7px solid #fff7ae;
+    background: radial-gradient(circle at 34% 28%, #fde68a 0, #facc15 55%, #ca8a04 100%);
+    box-shadow: 0 0 52px rgba(250, 204, 21, .9), inset -8px -10px 0 rgba(0, 0, 0, .15);
+    --dur: 1s;
+    animation-name: kg-item-pulse;
+}
+.kg-power__bolt {
+    left: 26px; top: 14px; width: 52px; height: 76px;
+    background: linear-gradient(160deg, #5b3a00, #3b2200);
+    clip-path: polygon(70% 0, 0 54%, 42% 54%, 22% 100%, 100% 36%, 58% 36%);
+}
+.kg-power__label {
+    left: 50%; top: calc(100% + 18px);
+    transform: translateX(-50%);
+    font: 900 40px/1 Arial, sans-serif;
+    letter-spacing: 2px;
+    color: #fff;
+    text-shadow: 0 0 12px rgba(250, 204, 21, .9);
+}
+
+/* ── Time Stop ─────────────────────────────────────────────────────────── */
+.kg-timestop .kg-art { --w: 112px; --h: 112px; }
+.kg-timestop__orb {
+    inset: 0;
+    border-radius: 50%;
+    border: 7px solid #93c5fd;
+    background: radial-gradient(circle at 34% 28%, #60a5fa 0, #1d4ed8 58%, #1e3a8a 100%);
+    box-shadow: 0 0 60px rgba(96, 165, 250, .9), inset -8px -10px 0 rgba(0, 0, 0, .2);
+    --dur: 1.5s;
+    animation-name: kg-item-pulse;
+}
+.kg-timestop__glass {
+    left: 36px; top: 24px; width: 40px; height: 64px;
+    background: linear-gradient(180deg, #e0f2fe, #bae6fd);
+    clip-path: polygon(0 0, 100% 0, 100% 9%, 58% 50%, 100% 91%, 100% 100%, 0 100%, 0 91%, 42% 50%, 0 9%);
+    --dur: 3s;
+    animation-name: kg-hourglass-flip;
+    animation-timing-function: steps(1, end);
+}
+.kg-timestop__sand {
+    left: 46px; top: 62px; width: 20px; height: 20px;
+    background: #fbbf24;
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+    opacity: .95;
+}
+@keyframes kg-hourglass-flip {
+    0%, 49% { transform: rotate(0deg); }
+    50%, 100% { transform: rotate(180deg); }
+}

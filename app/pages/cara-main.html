@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Cara Main — Killer & Gadfly</title>
+    <link rel="stylesheet" href="../../assets/css/pages/menu.css">
+    <link rel="stylesheet" href="../../assets/css/pages/rules.css">
+</head>
+<body>
+<main class="rules">
+    <div class="panel">
+        <h1>CARA MAIN</h1>
+
+        <div class="item"><div class="kg-preview" data-kg="player"></div><div><b>PLAYER</b><br>Kamu adalah kotak hijau. Gunakan tombol panah untuk bergerak.</div></div>
+        <div class="item"><div class="kg-preview" data-kg="target"></div><div><b>TARGET</b><br>Kotak putih = +1 poin.</div></div>
+        <div class="item"><div class="kg-preview" data-kg="health"></div><div><b>NYAWA</b><br>Icon + hijau = +1 nyawa. Maksimal 3.</div></div>
+        <div class="item"><div class="kg-preview" data-kg="gadfly"></div><div><b>GADFLY</b><br>Gadfly atas dan bawah bergerak horizontal mengikuti player. Gadfly kiri dan kanan bergerak vertikal mengikuti player.</div></div>
+        <div class="item"><div class="kg-preview" data-kg="killer"></div><div><b>KILLER</b><br>Killer memiliki loading sebelum mengejar. Saat loading mereka belum dapat menyerang.</div></div>
+        <div class="item"><div class="kg-preview" data-kg="archer"></div><div><b>ARCHER</b><br>Pada NORMAL dan SULIT, Archer membidik player dengan garis arah dan menembakkan panah. Benturan tubuh maupun panah dapat mengurangi nyawa.</div></div>
+        <div class="item"><div class="kg-preview" data-kg="power"></div><div><b>POWER KILL</b><br>Killer biasa dapat dibunuh ketika menyentuh player saat Power Kill aktif. Archer juga dapat dihancurkan. Mereka akan menghindar selama kekuatan aktif.</div></div>
+        <div class="item"><div class="kg-preview" data-kg="timestop"></div><div><b>TIME STOP</b><br>Ambil power khusus untuk menghentikan waktu selama 5 detik. Player tetap gesit, musuh dan panah melambat. Archer bisa dibunuh saat Time Stop.</div></div>
+        <div class="item is-hard"><div class="kg-preview" data-kg="vindex"></div><div><b>LORD VINDEX</b><br>Hanya muncul pada SULIT. Ia tidak dapat dibunuh dengan Power Kill maupun Time Stop. Saat Time Stop, insting menghindarnya menjadi jauh lebih cepat, tetapi serangannya tetap melambat.</div></div>
+        <div class="item"><div class="kg-preview" data-kg="meteor"></div><div><b>METEOR</b><br>Mulai sistem hujan meteor pada milestone tertentu. Pada SULIT, mulai poin 25 hujan meteor menjadi tidak berhenti sampai player mati.</div></div>
+        <div class="item is-hard"><div class="emoji">💀</div><div><b>SULIT</b><br>Awal permainan menampilkan Lord Vindex, 2 Killer, dan 2 Archer. Mereka menunggu sampai poin 5 sebelum bergerak. Pada poin 25 dimulai fase meteor tanpa akhir. Jika player tumbang, Lord Vindex menghidupkannya kembali.</div></div>
+        <div class="item"><div class="emoji">🏆</div><div><b>TRUE ENDING</b><br>Capai 100 poin. Pada SULIT, Lord Vindex, Archer, dan Killer ikut jatuh dalam ending terakhir.</div></div>
+        <div class="item"><div class="emoji">⏸</div><div><b>PAUSE</b><br>Tekan P atau tombol PAUSE.</div></div>
+
+        <a class="btn info" href="menu.html">KEMBALI KE MENU</a>
+    </div>
+</main>
+<script src="../js/render/sprite-templates.js"></script>
+<script src="../../assets/js/characters.js"></script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+/* ==========================================================================
+   KARAKTER CSS — dasar
+   --------------------------------------------------------------------------
+   Setiap karakter didesain pada skala 4x (1 piksel game = 4 piksel desain)
+   lalu diperkecil oleh --kg-s (default .25). Hasilnya vektor yang tajam, dan
+   desain yang sama bisa dipakai ukuran besar (galeri, landing page) hanya
+   dengan mengubah --kg-s.
+
+   Struktur DOM setiap karakter:
+     .kg .kg-<nama>          akar: titik jangkar (0x0), digerakkan translate
+       .kg-pose              rotasi / skala dinamis dari logika game
+         .kg-art             kotak desain (diskalakan --kg-s)
+   ========================================================================== */
+
+:root {
+    --kg-s: .25;
+
+    /* palet bersama */
+    --kg-ink: #0b0b10;
+    --kg-red: #ef4444;
+    --kg-red-deep: #991b1b;
+    --kg-green: #22c55e;
+    --kg-gold: #facc15;
+    --kg-blue: #60a5fa;
+    --kg-violet: #a855f7;
+
+    /* tema meteor (diganti di mode SULIT) */
+    --kg-meteor-rock: #fb923c;
+    --kg-meteor-rock-dark: #c2410c;
+    --kg-meteor-trail: #f59e0b;
+    --kg-meteor-big-trail: #ef4444;
+    --kg-meteor-crack: #f97316;
+    --kg-meteor-crack-glow: rgba(249, 115, 22, .8);
+}
+
+body[data-level="hard"] {
+    --kg-meteor-rock: #7e22ce;
+    --kg-meteor-rock-dark: #3b0764;
+    --kg-meteor-trail: #a855f7;
+    --kg-meteor-big-trail: #a855f7;
+    --kg-meteor-crack: #c084fc;
+    --kg-meteor-crack-glow: rgba(192, 132, 252, .85);
+}
+
+/* ── lapisan sprite di dalam arena ─────────────────────────────────────── */
+.kg-layer {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    --kg-s: .25;
+    --kg-time: 1; /* 1 = normal, <1 = animasi CSS melambat saat Time Stop */
+}
+.kg-layer.is-paused .kg *,
+.kg-layer.is-paused .kg { animation-play-state: paused !important; }
+.kg-layer.is-timestop { --kg-time: .18; }
+.kg-layer.is-hidden { visibility: hidden; }
+
+/* ── akar karakter ─────────────────────────────────────────────────────── */
+.kg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    will-change: transform;
+    contain: layout style;
+}
+.kg-pose { position: absolute; left: 0; top: 0; width: 0; height: 0; }
+
+.kg-art {
+    position: absolute;
+    left: calc(var(--w) / -2);
+    top: calc(var(--h) / -2);
+    width: var(--w);
+    height: var(--h);
+    transform: scale(var(--kg-s));
+    transform-origin: 50% 50%;
+}
+.kg-art > * { position: absolute; }
+
+/* urutan tumpukan (item < meteor < gadfly < killer < archer < vindex < pemain) */
+.kg-target,
+.kg-health,
+.kg-power,
+.kg-timestop { z-index: 1; }
+.kg-meteor,
+.kg-meteor-big { z-index: 3; }
+.kg-gadfly { z-index: 4; }
+.kg-killer { z-index: 5; }
+.kg-archer { z-index: 6; }
+.kg-arrow { z-index: 7; }
+.kg-vindex { z-index: 8; }
+.kg-player { z-index: 9; }
+
+/* animasi memakai durasi dasar / kecepatan waktu agar ikut melambat */
+.kg-anim {
+    animation-duration: calc(var(--dur, 1s) / var(--kg-time, 1));
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+/* ── cincin umum (aura, spawn, teleport, kematian) — satuan piksel game ── */
+.kg-ring {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: calc(var(--r) * 2px);
+    height: calc(var(--r) * 2px);
+    margin: calc(var(--r) * -1px) 0 0 calc(var(--r) * -1px);
+    border: calc(var(--bw, 2) * 1px) solid var(--c, #fff);
+    border-radius: 50%;
+    opacity: var(--o, 1);
+    box-sizing: border-box;
+}
+
+/* ── pratinjau statis (landing page, halaman cara main) ────────────────── */
+.kg-preview {
+    --kg-s: .5;
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: calc(var(--box, 100) * 1px);
+    height: calc(var(--box, 100) * 1px);
+}
+.kg-preview > .kg { left: 50%; top: 50%; }

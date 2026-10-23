@@ -1,0 +1,63 @@
+/* ==========================================================================
+   LORD VINDEX — penguasa ungu bermahkota (hitbox 42x42, mode SULIT)
+   Pusat kotak desain = pusat orb (88, 88).
+   ========================================================================== */
+.kg-vindex .kg-art { --w: 176px; --h: 176px; }
+
+.kg-vindex__orb {
+    inset: 0;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 34% 26%, #7e22ce 0, #3b0764 58%, #1e0338 100%);
+    box-shadow:
+        0 0 calc(var(--glow, 14) * 4px) #a855f7,
+        inset 0 0 0 6px rgba(192, 132, 252, .35),
+        inset -14px -16px 0 rgba(0, 0, 0, .25);
+}
+.kg-vindex__eye {
+    top: 56px; width: 32px; height: 28px;
+    background: #c084fc;
+    box-shadow: 0 0 16px rgba(192, 132, 252, .8);
+}
+.kg-vindex__eye--l { left: 40px;  clip-path: polygon(0 0, 100% 35%, 100% 100%, 0 100%); }
+.kg-vindex__eye--r { left: 104px; clip-path: polygon(0 35%, 100% 0, 100% 100%, 0 100%); }
+.kg-vindex__pupil { top: 64px; width: 12px; height: 12px; background: #111827; }
+.kg-vindex__pupil--l { left: 52px; }
+.kg-vindex__pupil--r { left: 112px; }
+.kg-vindex__mouth {
+    left: 48px; top: 116px; width: 80px; height: 16px;
+    border-radius: 4px;
+    background: repeating-linear-gradient(90deg, #fef3c7 0 12px, #d8c98e 12px 14px);
+}
+.kg-vindex__crown {
+    left: 40px; top: -26px; width: 96px; height: 46px;
+    background: linear-gradient(180deg, #fde68a, #f59e0b);
+    clip-path: polygon(0 100%, 0 18%, 25% 58%, 50% 0, 75% 58%, 100% 18%, 100% 100%);
+    filter: drop-shadow(0 0 10px rgba(250, 204, 21, .6));
+}
+.kg-vindex__aura {
+    inset: -28px;
+    border-radius: 50%;
+    border: 6px solid rgba(168, 85, 247, .35);
+    --dur: 2.2s;
+    animation-name: kg-vindex-aura;
+}
+@keyframes kg-vindex-aura {
+    0%   { transform: scale(.94); opacity: .9; }
+    100% { transform: scale(1.1); opacity: .15; }
+}
+.kg-vindex__label {
+    left: 50%; top: 190px;
+    transform: translateX(-50%);
+    font: 900 40px/1 Arial, sans-serif;
+    letter-spacing: 3px;
+    color: #f5d0fe;
+    white-space: nowrap;
+    text-shadow: 0 0 14px rgba(168, 85, 247, .9);
+}
+.kg-vindex__label::before { content: "VINDEX"; }
+.kg-ring--dashed { border-style: dashed; }
+
+/* varian sinematik (adegan pembuka) */
+.kg-vindex--cinematic { z-index: 20; }
+.kg-vindex--cinematic .kg-vindex__label { display: none; }

@@ -1,0 +1,72 @@
+/* Kontrol sentuh (mobile) & penyesuaian layar kecil */
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+#mobileControls{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:100;
+    pointer-events:none;
+}
+
+.controlGroup{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    pointer-events:auto;
+}
+
+.controlGroup.leftControls{left:8px;}
+.controlGroup.rightControls{right:8px;}
+
+.controlButton{
+    width:58px;
+    height:58px;
+    padding:0;
+    margin:0;
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:15px;
+    font-size:25px;
+    font-weight:900;
+    opacity:.78;
+    touch-action:none;
+    user-select:none;
+    -webkit-user-select:none;
+    -webkit-touch-callout:none;
+    background:rgba(15,23,42,.78);
+    color:#fff;
+    box-shadow:0 5px 18px rgba(0,0,0,.4);
+}
+
+.controlButton:active{
+    transform:scale(.92);
+    opacity:1;
+}
+
+@media(max-width:600px){
+
+    #mobileControls{
+        display:block;
+    }
+
+    #scoreText{
+        font-size:18px;
+    }
+
+    .life{
+        width:27px;
+        height:27px;
+    }
+
+    .life::after{
+        font-size:19px;
+    }
+
+}
+

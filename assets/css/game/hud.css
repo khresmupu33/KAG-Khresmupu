@@ -1,0 +1,132 @@
+/* HUD: skor, status power, nyawa */
+
+/* =========================================================
+   HUD
+========================================================= */
+
+#hud{
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:65px;
+    z-index:20;
+    pointer-events:none;
+}
+
+#scoreText{
+    position:absolute;
+    left:20px;
+    top:15px;
+    color:white;
+    font-size:23px;
+    font-weight:900;
+    text-shadow:
+        2px 2px 3px #000;
+}
+
+#scoreNumber{
+    color:var(--accent);
+}
+
+#lives{
+    position:absolute;
+    right:20px;
+    top:14px;
+    display:flex;
+    gap:8px;
+}
+
+.life{
+    width:32px;
+    height:32px;
+    position:relative;
+}
+
+.life::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:50%;
+    background:
+        radial-gradient(
+            circle,
+            #4ade80,
+            #16a34a 65%,
+            #065f46
+        );
+    box-shadow:
+        0 0 10px rgba(34,197,94,.55);
+}
+
+.life::after{
+    content:"+";
+    position:absolute;
+    left:0;
+    top:-1px;
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    font-size:23px;
+    font-weight:900;
+    text-shadow:
+        1px 1px 2px #064e3b;
+}
+
+.life.dead::before{
+    background:
+        radial-gradient(
+            circle,
+            #374151,
+            #111827
+        );
+    opacity:.6;
+    box-shadow:none;
+}
+
+.life.dead::after{
+    color:#64748b;
+    text-shadow:none;
+}
+
+#powerStatus{
+    position:absolute;
+    left:50%;
+    top:12px;
+    transform:translateX(-50%);
+    display:flex;
+    align-items:center;
+    gap:7px;
+    padding:6px 11px;
+    border:1px solid #facc15;
+    border-radius:999px;
+    background:rgba(20,10,0,.88);
+    color:#fde68a;
+    font-size:13px;
+    font-weight:900;
+    box-shadow:0 0 16px rgba(250,204,21,.55);
+    pointer-events:none;
+}
+
+.powerIcon{
+    font-size:18px;
+    line-height:1;
+    animation:powerPulse .35s infinite alternate;
+}
+
+@keyframes powerPulse{
+    from{transform:scale(.9) rotate(-5deg);}
+    to{transform:scale(1.15) rotate(5deg);}
+}
+
+.powerupGlow{
+    animation:powerField .5s infinite alternate;
+}
+
+@keyframes powerField{
+    from{opacity:.65;}
+    to{opacity:1;}
+}

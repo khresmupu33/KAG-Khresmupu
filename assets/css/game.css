@@ -1,0 +1,11 @@
+/* Gaya halaman game (Mudah, Normal, Sulit, Sulit Lanjutan) */
+@import url("game/tokens.css");
+@import url("game/base.css");
+@import url("game/arena.css");
+@import url("game/buttons.css");
+@import url("game/hud.css");
+@import url("game/overlays.css");
+@import url("game/screens.css");
+@import url("game/controls.css");
+@import url("game/landscape-overlay.css");
+@import url("characters.css");

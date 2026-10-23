@@ -1,0 +1,54 @@
+/* Tombol dasar: merah (utama) & gelap */
+
+button{
+    border:1px solid #64748b;
+    border-radius:8px;
+    padding:13px 20px;
+    font-size:17px;
+    font-weight:900;
+    cursor:pointer;
+    color:#111827;
+    background:
+        linear-gradient(
+            180deg,
+            #f8fafc,
+            #cbd5e1
+        );
+    box-shadow:
+        0 4px 0 #475569;
+    transition:
+        transform .12s,
+        filter .12s;
+}
+
+button:hover{
+    transform:translateY(-2px);
+    filter:brightness(1.08);
+}
+
+button:active{
+    transform:translateY(2px);
+}
+
+.redButton{
+    color:white;
+    background:
+        linear-gradient(
+            180deg,
+            var(--btn-from),
+            var(--btn-to)
+        );
+    border-color:var(--accent);
+    box-shadow:
+        0 4px 0 var(--btn-shadow);
+}
+
+.darkButton{
+    color:white;
+    background:
+        linear-gradient(
+            180deg,
+            #334155,
+            #111827
+        );
+}

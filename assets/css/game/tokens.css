@@ -1,0 +1,18 @@
+/* Token warna tema (merah = Mudah/Normal). Mode SULIT menimpa di themes/hard.css */
+:root {
+    --accent: #ef4444;
+    --accent-text: #ef2222;
+    --accent-hot: #ff0000;
+    --accent-light: #ff5555;
+    --title: #ff3333;
+    --accent-glow: rgba(255, 0, 0, .7);
+    --accent-glow-60: rgba(255, 0, 0, .6);
+    --accent-glow-soft: rgba(255, 0, 0, .55);
+    --glow-wrapper: rgba(255, 0, 0, .12);
+    --vignette: rgba(130, 0, 0, .22);
+    --btn-from: #991b1b;
+    --btn-to: #450a0a;
+    --btn-shadow: #280303;
+    --panel-dark: #160406;
+    --life-dark: #7f1d1d;
+}

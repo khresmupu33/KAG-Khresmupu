@@ -1,0 +1,112 @@
+/* Overlay permainan: jeda, siap, peringatan killer */
+
+/* =========================================================
+   PAUSE
+========================================================= */
+
+#pauseText{
+    position:absolute;
+    left:50%;
+    top:90px;
+    transform:translateX(-50%);
+    z-index:30;
+    display:none;
+    text-align:center;
+    color:#facc15;
+    font-size:29px;
+    font-weight:900;
+    text-shadow:
+        2px 2px 4px #000;
+    pointer-events:none;
+}
+
+#pauseText small{
+    color:white;
+    font-size:14px;
+}
+
+/* =========================================================
+   PAUSE BUTTON
+========================================================= */
+
+#pauseButton{
+    position:fixed !important;
+    top:12px !important;
+    right:12px !important;
+    bottom:auto !important;
+    left:auto !important;
+    z-index:2147483000 !important;
+    width:105px;
+    padding:9px 12px;
+    font-size:13px;
+    pointer-events:auto;
+    display:none;
+}
+
+/* =========================================================
+   READY
+========================================================= */
+
+#readyOverlay{
+    position:absolute;
+    inset:0;
+    z-index:25;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:white;
+    font-size:31px;
+    font-weight:900;
+    text-shadow:
+        3px 3px 5px #000;
+    pointer-events:none;
+}
+
+/* =========================================================
+   SPAWN WARNING
+========================================================= */
+
+#spawnWarning{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    z-index:27;
+    display:none;
+    text-align:center;
+    pointer-events:none;
+}
+
+.spawnTitle{
+    color:#ff2222;
+    font-size:27px;
+    font-weight:900;
+    letter-spacing:4px;
+    text-shadow:
+        0 0 8px var(--accent-hot),
+        0 0 20px var(--accent-glow),
+        3px 3px 3px #000;
+    animation:
+        warningBlink .3s infinite alternate;
+}
+
+.spawnSub{
+    margin-top:8px;
+    color:white;
+    font-size:13px;
+    letter-spacing:3px;
+    text-shadow:
+        2px 2px 3px #000;
+}
+
+@keyframes warningBlink{
+    from{
+        opacity:.35;
+        transform:scale(.94);
+    }
+    to{
+        opacity:1;
+        transform:scale(1.05);
+    }
+}

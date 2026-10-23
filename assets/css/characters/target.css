@@ -1,0 +1,29 @@
+/* ==========================================================================
+   TARGET — ubin putih dengan reticle merah (hitbox 20x20)
+   ========================================================================== */
+.kg-target .kg-art { --w: 88px; --h: 88px; }
+
+.kg-target__tile {
+    inset: 0;
+    border-radius: 12px;
+    border: 6px solid #d1d5db;
+    background: linear-gradient(145deg, #ffffff, #f3f4f6 55%, #e5e7eb);
+    box-shadow: 0 0 30px rgba(255, 255, 255, .45), inset 0 0 0 6px #fff;
+    --dur: 1.6s;
+    animation-name: kg-target-glow;
+}
+@keyframes kg-target-glow {
+    50% { box-shadow: 0 0 52px rgba(255, 255, 255, .85), inset 0 0 0 6px #fff; }
+}
+.kg-target__ring {
+    left: 22px; top: 22px; width: 44px; height: 44px;
+    box-sizing: border-box;
+    border: 6px solid #9ca3af;
+    border-radius: 50%;
+}
+.kg-target__dot {
+    left: 36px; top: 36px; width: 16px; height: 16px;
+    border-radius: 50%;
+    background: #ef4444;
+    box-shadow: 0 0 10px rgba(239, 68, 68, .7);
+}

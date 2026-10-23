@@ -1,0 +1,70 @@
+/* ==========================================================================
+   GADFLY — serangga kotak merah bersayap (hitbox 20x20), berputar saat bergerak
+   Pusat kotak desain = pusat badan (64, 48).
+   ========================================================================== */
+.kg-gadfly .kg-art { --w: 128px; --h: 96px; }
+
+.kg-gadfly__wing {
+    top: 18px; width: 28px; height: 60px;
+    border-radius: 14px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, .85), rgba(255, 255, 255, .45));
+    box-shadow: inset 0 0 0 3px rgba(255, 255, 255, .55);
+    --dur: .16s;
+    animation-name: kg-wing-flap;
+}
+.kg-gadfly__wing--l { left: 6px;  transform-origin: 100% 50%; }
+.kg-gadfly__wing--r { left: 94px; transform-origin: 0 50%; --dir: -1; animation-name: kg-wing-flap-r; }
+@keyframes kg-wing-flap   { 50% { transform: scaleX(.55); } }
+@keyframes kg-wing-flap-r { 50% { transform: scaleX(.55); } }
+
+.kg-gadfly__feeler {
+    top: 0; width: 6px; height: 20px;
+    border-radius: 3px;
+    background: #7f1d1d;
+}
+.kg-gadfly__feeler--l { left: 40px; transform: rotate(-18deg); transform-origin: 50% 100%; }
+.kg-gadfly__feeler--r { left: 82px; transform: rotate(18deg);  transform-origin: 50% 100%; }
+
+.kg-gadfly__body {
+    left: 24px; top: 8px; width: 80px; height: 80px;
+    box-sizing: border-box;
+    border-radius: 12px;
+    border: 5px solid #7f1d1d;
+    background: linear-gradient(145deg, #f87171 0%, #ef4444 50%, #b91c1c 100%);
+    box-shadow: inset 7px 7px 0 rgba(255, 255, 255, .18), inset -8px -8px 0 rgba(0, 0, 0, .22), 0 0 28px rgba(239, 68, 68, .45);
+}
+.kg-gadfly__eye {
+    top: 28px; width: 16px; height: 16px;
+    background: #111827;
+    border-radius: 3px;
+}
+.kg-gadfly__eye::after {
+    content: "";
+    position: absolute; left: 4px; top: 4px; width: 4px; height: 4px;
+    background: #f8fafc;
+}
+.kg-gadfly__eye--l { left: 40px; }
+.kg-gadfly__eye--r { left: 72px; }
+.kg-gadfly__mouth {
+    left: 44px; top: 60px; width: 40px; height: 12px;
+    background: #111827;
+    border-radius: 3px;
+}
+.kg-gadfly__mouth::before,
+.kg-gadfly__mouth::after {
+    content: "";
+    position: absolute; top: 0; width: 8px; height: 8px;
+    background: #f8fafc;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+.kg-gadfly__mouth::before { left: 6px; }
+.kg-gadfly__mouth::after  { right: 6px; }
+
+/* beku (efek Time Stop / benturan) */
+.kg-gadfly.is-frozen .kg-gadfly__body {
+    border-color: #334155;
+    background: linear-gradient(145deg, #94a3b8 0%, #64748b 50%, #475569 100%);
+    box-shadow: inset 7px 7px 0 rgba(255, 255, 255, .25), inset -8px -8px 0 rgba(0, 0, 0, .25), 0 0 24px rgba(148, 163, 184, .55);
+}
+.kg-gadfly.is-frozen .kg-gadfly__wing { animation-play-state: paused; }
+.kg-gadfly.is-blink .kg-art { opacity: .45; }

@@ -1,0 +1,10 @@
+/* Semua karakter CSS (impor satu per satu agar mudah dirawat) */
+@import url("characters/_base.css");
+@import url("characters/player.css");
+@import url("characters/target.css");
+@import url("characters/items.css");
+@import url("characters/gadfly.css");
+@import url("characters/killer.css");
+@import url("characters/archer.css");
+@import url("characters/vindex.css");
+@import url("characters/meteor.css");

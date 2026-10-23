@@ -1,0 +1,63 @@
+/* Layar akhir: game over & true ending */
+
+/* =========================================================
+   END
+========================================================= */
+
+#endScreen,
+#trueEndingScreen{
+    background:
+        radial-gradient(
+            circle,
+            #1f2937,
+            #050609 65%,
+            #000
+        );
+    color:white;
+    text-align:center;
+}
+
+.endTitle{
+    color:var(--accent);
+    font-size:54px;
+    font-weight:900;
+    text-shadow:
+        0 0 18px var(--accent-glow);
+    margin-bottom:15px;
+}
+
+.endScore{
+    font-size:32px;
+    margin-bottom:40px;
+}
+
+.endButtons{
+    width:250px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.trueCongrats{
+    color:#facc15;
+    font-size:48px;
+    font-weight:900;
+    text-shadow:
+        0 0 12px #facc15,
+        0 0 30px rgba(250,204,21,.5);
+    margin-bottom:28px;
+}
+
+.trueText{
+    color:white;
+    font-size:29px;
+    font-weight:900;
+    line-height:1.4;
+}
+
+.trueEnding{
+    color:#67e8f9;
+    font-size:22px;
+    font-style:italic;
+    margin:20px 0 40px;
+}

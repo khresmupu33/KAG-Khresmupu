@@ -1,0 +1,56 @@
+/* ==========================================================================
+   Tema SULIT (ungu) — hanya menimpa token + beberapa hiasan.
+   Dipasang setelah game.css pada sulit.html & sulit-lanjutan.html
+   ========================================================================== */
+body[data-level="hard"] {
+    --accent: #a855f7;
+    --accent-text: #c084fc;
+    --accent-hot: #a855f7;
+    --accent-light: #d8b4fe;
+    --title: #c084fc;
+    --accent-glow: rgba(168, 85, 247, .7);
+    --accent-glow-60: rgba(168, 85, 247, .6);
+    --accent-glow-soft: rgba(168, 85, 247, .55);
+    --glow-wrapper: rgba(168, 85, 247, .16);
+    --vignette: rgba(88, 28, 135, .28);
+    --btn-from: #581c87;
+    --btn-to: #2e1065;
+    --btn-shadow: #17052f;
+    --panel-dark: #16051f;
+    --life-dark: #6b21a8;
+}
+
+body.game-page[data-level="hard"] {
+    background: radial-gradient(circle at 50% 30%, #18052b 0, #050208 48%, #010102 100%);
+}
+body.game-page[data-level="hard"] #gameWrapper {
+    box-shadow: 0 0 35px rgba(168, 85, 247, .28), 0 0 90px rgba(88, 28, 135, .20);
+    border: 1px solid rgba(192, 132, 252, .22);
+}
+body.game-page[data-level="hard"] #hud { filter: drop-shadow(0 0 8px rgba(168, 85, 247, .25)); }
+
+#hardDeathMessage {
+    display: none;
+    max-width: 600px;
+    margin: -22px auto 28px;
+    color: #e9d5ff;
+    font-size: 18px;
+    line-height: 1.6;
+    padding: 15px 20px;
+    border: 1px solid rgba(168, 85, 247, .5);
+    border-radius: 14px;
+    background: rgba(59, 7, 100, .18);
+}
+
+/* transisi hitam saat pindah ke fase lanjutan */
+body.hard-transition-out::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: #05020a;
+    opacity: 0;
+    pointer-events: none;
+    animation: hardTransitionFade .45s ease forwards;
+}
+@keyframes hardTransitionFade { to { opacity: 1; } }

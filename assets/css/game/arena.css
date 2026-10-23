@@ -1,0 +1,53 @@
+/* ==========================================================================
+   Arena 800x600
+   #gameWrapper  : kotak yang menyesuaikan ukuran layar (rasio 4:3)
+   #arena        : panggung logis 800x600, diskalakan & digetarkan lewat CSS
+                   (variabel --stage-scale dihitung render/stage.js)
+   ========================================================================== */
+#gameWrapper {
+    position: relative;
+    flex: none;
+    width: min(800px, 100vw, calc(100vh * 4 / 3));
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: #050505;
+    box-shadow:
+        0 0 30px rgba(0, 0, 0, .9),
+        0 0 70px var(--glow-wrapper);
+}
+
+#arena {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 800px;
+    height: 600px;
+    transform-origin: 0 0;
+    transform: scale(var(--stage-scale, 1)) translate(var(--shake-x, 0px), var(--shake-y, 0px));
+}
+
+#arena canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    width: 800px;
+    height: 600px;
+}
+
+/* ponsel landscape: sisakan ruang untuk tombol kontrol di kiri-kanan */
+@media (max-width: 900px) and (orientation: landscape) {
+    .game-page { display: flex; align-items: center; justify-content: center; }
+    .game-page #gameWrapper { width: min(70vw, 760px, calc(84vh * 4 / 3)); }
+    .game-page #mobileControls { display: block; position: fixed; inset: 0; z-index: 100; pointer-events: none; }
+    .game-page .controlGroup { top: 50%; transform: translateY(-50%); gap: 10px; }
+    .game-page .controlGroup.leftControls { left: 8px; }
+    .game-page .controlGroup.rightControls { right: 8px; }
+    .game-page .controlButton { width: 54px; height: 54px; }
+}
+
+/* ponsel potret: game disembunyikan, overlay "putar ke landscape" tampil */
+@media (max-width: 900px) and (orientation: portrait) {
+    .game-page #gameWrapper { width: 0; height: 0; box-shadow: none; background: transparent; }
+    .game-page #mobileControls { display: none !important; }
+}

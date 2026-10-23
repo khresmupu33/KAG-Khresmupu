@@ -1,0 +1,76 @@
+/* ==========================================================================
+   ARCHER — pemanah bulat dengan busur & garis bidik (hitbox 22x22)
+   Pose berputar mengikuti arah bidik; label "AIM" tetap tegak.
+   ========================================================================== */
+.kg-archer .kg-art { --w: 128px; --h: 128px; }
+
+.kg-archer__body {
+    left: 16px; top: 16px; width: 96px; height: 96px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    border: 8px solid #fdba74;
+    background: radial-gradient(circle at 34% 28%, #c2410c 0, #7c2d12 58%, #431407 100%);
+    box-shadow: 0 0 28px rgba(249, 115, 22, .45), inset -8px -10px 0 rgba(0, 0, 0, .22);
+    --dur: 1.2s;
+    animation-name: kg-archer-breathe;
+}
+@keyframes kg-archer-breathe { 50% { transform: scale(1.06); } }
+
+.kg-archer__bow {
+    left: 40px; top: 32px; width: 64px; height: 64px;
+    box-sizing: border-box;
+    border: 8px solid #f8fafc;
+    border-radius: 50%;
+    -webkit-mask: conic-gradient(from 21deg at 50% 50%, #000 0 138deg, transparent 0);
+            mask: conic-gradient(from 21deg at 50% 50%, #000 0 138deg, transparent 0);
+}
+.kg-archer__nock {
+    left: 72px; top: 52px; width: 20px; height: 24px;
+    border-radius: 5px;
+    background: #fee2e2;
+}
+
+/* garis bidik — satuan piksel game, ikut berputar & mengecil bersama pose */
+.kg-archer__aim {
+    position: absolute; left: 7px; top: -1px; width: 108px; height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #f97316, rgba(249, 115, 22, .55));
+}
+.kg-layer.is-timestop .kg-archer__aim { background: linear-gradient(90deg, #93c5fd, rgba(147, 197, 253, .55)); }
+
+.kg-archer__label {
+    position: absolute; left: 0; top: -17px;
+    transform: translate(-50%, -50%);
+    font: 900 11px/1 Arial, sans-serif;
+    color: #fbbf24;
+    text-shadow: 0 0 6px rgba(251, 191, 36, .6);
+    display: none;
+}
+.kg-archer.is-aiming .kg-archer__label { display: block; }
+.kg-archer__label::before { content: "AIM"; }
+
+/* ── panah ─────────────────────────────────────────────────────────────── */
+.kg-arrow .kg-art { --w: 96px; --h: 48px; }
+.kg-arrow__shaft {
+    left: 20px; top: 20px; width: 52px; height: 8px;
+    border-radius: 4px;
+    background: linear-gradient(180deg, #fef3c7, #fde68a 50%, #d4a72c);
+}
+.kg-arrow__head {
+    left: 66px; top: 8px; width: 26px; height: 32px;
+    background: #fde68a;
+    clip-path: polygon(0 0, 100% 50%, 0 100%, 22% 50%);
+}
+.kg-arrow__fletch {
+    left: 6px; top: 12px; width: 22px; height: 24px;
+    background: #fde68a;
+    opacity: .85;
+    clip-path: polygon(0 0, 55% 0, 100% 50%, 55% 100%, 0 100%, 40% 50%);
+}
+.kg-arrow.is-lord .kg-arrow__shaft { background: linear-gradient(180deg, #ddd6fe, #a78bfa 50%, #7c3aed); }
+.kg-arrow.is-lord .kg-arrow__head,
+.kg-arrow.is-lord .kg-arrow__fletch { background: #a78bfa; }
+.kg-arrow.is-lord .kg-art { filter: drop-shadow(0 0 8px rgba(167, 139, 250, .9)); }
+
+/* pratinjau statis: garis bidik dipendekkan agar tidak menimpa teks */
+.kg-preview .kg-archer__aim { width: 24px; }
